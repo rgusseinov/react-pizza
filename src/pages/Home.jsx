@@ -13,7 +13,12 @@ function Home(props){
             'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'
             ]} onItemClick={(name) => console.log(name)}  />
             
-            <SortPopup items={['популярности', 'цене', 'алфавиту']} />
+            <SortPopup 
+              items={[
+                {name: 'популярности', type: 'popular'},
+                {name: 'цене', type: 'price'},
+                {name: 'алфавиту', type: 'aplahabet'}
+              ]} />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">

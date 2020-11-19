@@ -3,6 +3,7 @@ import './scss/app.scss'
 import {Route} from 'react-router-dom'
 import {Header} from './components'
 import {Home, Cart} from './pages'
+import axios from 'axios'
 
 function App(){
 
@@ -10,9 +11,13 @@ function App(){
 
   useEffect(() => {
  
-      fetch('http://localhost:3000/db.json')
+    axios.get('http://localhost:3000/db.json').then(({ data }) => {
+      setPizzas(data.pizzas)
+    })
+    
+/*       fetch('http://localhost:3000/db.json')
       .then((response) => response.json())
-      .then((data) => setPizzas(data.pizzas))
+      .then((data) => setPizzas(data.pizzas)) */
       
   }, [])
 
@@ -30,5 +35,6 @@ function App(){
  
   
 }
+
 
 export default App;
