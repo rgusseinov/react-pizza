@@ -52,10 +52,11 @@ const SortPopup = ({ items }) => {
                 <div className="sort__popup">
                 <ul>
                     {
-                        items && items.map((name, index) => 
+                        items && items.map((obj, index) => 
                             <li onClick={() => onSelectItem(index)} 
-                                key={index}
-                                className={activeItem === index ? 'active' : ''}> {name} </li>
+                                key={obj.type}
+                                className={activeItem === index ? 'active' : ''}> {obj.name}
+                            </li>
                         )
                     }
                 </ul>
