@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {Categories, SortPopup, PizzaBlock} from '../components'
+import {useSelector} from 'react-redux'
 
 
-function Home(props){
-    // console.log(props)
-    const items = props.items
+function Home(){
+
+  const { items } = useSelector(({pizzas}) => {
+    return {
+      items: pizzas.items
+    }
+  })
+
+    // const items = props.items
     return (
         <div className="container">
         <div className="content__top">
