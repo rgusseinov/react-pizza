@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import './scss/app.scss'
 import {Route} from 'react-router-dom'
 import {Header} from './components'
@@ -6,42 +6,17 @@ import {Home, Cart} from './pages'
 import axios from 'axios'
 import {connect} from 'react-redux'
 // import store from './redux/store'
-import {setPizzas as setPizzasAction} from './redux/actions/pizzas'
-
-/* function App(){
-
-  const [pizzas, setPizzas] = useState([])
-  useEffect(() => {
-    axios.get('http://localhost:3000/db.json').then(({ data }) => {
-      setPizzas(data.pizzas)
-    })
-  }, [])
-
-    return (
-      <div className="wrapper">
-        <Header />
-        <div className="content">
-          <Route path="/" component={() => <Home items={pizzas} />} exact />
-          <Route path="/cart" component={Cart} exact /> 
-        </div>
-      </div>
-    );
-
-} */
+import {setPizzas} from './redux/actions/pizzas'
 
 class App extends React.Component {
   
-  // const [pizzas, setPizzas] = useState([])
-
   componentDidMount(){
     axios.get('http://localhost:3000/db.json').then(({ data }) => {
-      this.props.sohranitPizi(data.pizzas)
-      // console.log(`data`, data.pizzas)
+      this.props.setPizzas(data.pizzas)
     })
   }
-  render(){
-    // console.log(this.props.items)
 
+  render(){
     return (
       <div className="wrapper">
         <Header />
@@ -57,13 +32,14 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   // console.log(`items`, state.pizzas.items)
   return {
-    items: state.pizzas.items
+    items: state.pizzas.items,
+    filters: state.filters
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    sohranitPizi: (items) => dispatch(setPizzasAction(items)) 
+    setPizzas: (items) => dispatch(setPizzas(items)) 
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
