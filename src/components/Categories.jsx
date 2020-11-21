@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 function Categories({items, onItemClick}){
 
     let [activeItem, setActiveItem] = useState(null)
+    
     const onSelectItem = (index) => {
         setActiveItem(index)
         onItemClick(index)
