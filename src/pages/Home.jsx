@@ -15,6 +15,7 @@ const sortItems = [
 function Home(){
   const dispatch = useDispatch()  
   const items = useSelector(({ pizzas }) => pizzas.items)
+  const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded)
 
   React.useEffect(() => {
     // Перенести в Redux и подключить redux-thunk
@@ -24,7 +25,9 @@ function Home(){
 
     // Убираем лишную загрузку json данных. Если пиццы в redux уже есть то не нужно
     // if (!items.length){
+      // console.log(`items`, items)
       dispatch(fetchPizzas())
+
     // }
     
   }, [])
@@ -47,7 +50,7 @@ function Home(){
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
             {
-                items.map((item) => <PizzaBlock key={item.id} {...item} />)
+              isLoaded && items.map((item) => <PizzaBlock key={item.id} {...item} />)
             }
             
              
