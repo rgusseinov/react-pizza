@@ -3,18 +3,10 @@ import './scss/app.scss'
 import {Route} from 'react-router-dom'
 import {Header} from './components'
 import {Home, Cart} from './pages'
-import {useDispatch} from 'react-redux'
-import {setPizzas, fetchPizzas} from './redux/actions/pizzas'
 
 function App() {
 
   // const dispatch = useDispatch()
-  React.useEffect(() => {
-    // Перенести в Redux и подключить redux-thunk
-    // Следить за фильтрацией и сортировкой и подставлять параметры в URL из Redux
-    // Сделать имитацию загрущки пицц (которая есть в CSS и в PizzaBlock)
-    // console.log(fetchPizzas())
-  }, [])
 
   return (
     <div className="wrapper">
