@@ -3,22 +3,17 @@ import './scss/app.scss'
 import {Route} from 'react-router-dom'
 import {Header} from './components'
 import {Home, Cart} from './pages'
-import axios from 'axios'
 import {useDispatch} from 'react-redux'
-import {setPizzas} from './redux/actions/pizzas'
+import {setPizzas, fetchPizzas} from './redux/actions/pizzas'
 
 function App() {
 
-  const dispatch = useDispatch()
-
-
+  // const dispatch = useDispatch()
   React.useEffect(() => {
-    axios.get('http://localhost:3000/db.json').then(({ data }) => {
-
-      dispatch(setPizzas(data.pizzas))
-      // console.log(`data.pizzas`, data.pizzas)
-
-    })
+    // Перенести в Redux и подключить redux-thunk
+    // Следить за фильтрацией и сортировкой и подставлять параметры в URL из Redux
+    // Сделать имитацию загрущки пицц (которая есть в CSS и в PizzaBlock)
+    // console.log(fetchPizzas())
   }, [])
 
   return (
