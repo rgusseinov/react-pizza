@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Categories, SortPopup, PizzaBlock} from '../components'
+import {Categories, SortPopup, PizzaBlock, PizzaLoadingBlock} from '../components'
 import {useSelector, useDispatch} from 'react-redux'
 import { setCategory } from '../redux/actions/filters'
 import {setPizzas, fetchPizzas} from '../redux/actions/pizzas'
@@ -49,11 +49,12 @@ function Home(){
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
-            {
-              isLoaded && items.map((item) => <PizzaBlock key={item.id} {...item} />)
-            }
-            
-             
+            { isLoaded 
+              ? items.map((item) => <PizzaBlock isLoading={true} key={item.id} {...item} />)
+              : Array(12).
+              fill(0).
+              map((_, index) => <PizzaLoadingBlock key={index} />)
+            }             
         </div>
       </div>
 
