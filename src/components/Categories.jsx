@@ -13,7 +13,9 @@ const Categories = React.memo(
         } */
     
 
-        // console.log(activeCategory)
+        // console.log(`items`, items)
+        // console.log(`activeCategory`, activeCategory)
+        
 
         return (
             <div>

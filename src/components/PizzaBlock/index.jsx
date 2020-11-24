@@ -4,7 +4,7 @@ import {PropTypes} from 'prop-types'
 import ContentLoader from "react-content-loader"
 
 
-function PizzaBlock({ name, price, types, sizes}){
+function PizzaBlock({ name, price, types, sizes, imageUrl}){
     const typeNames = ['тонкое', 'традиционное']
     const availableSizes = [26, 30, 40]
 
@@ -19,26 +19,11 @@ function PizzaBlock({ name, price, types, sizes}){
         setActiveSize(index)
     }
 
-
-/*     return (
-        <ContentLoader 
-        speed={2}
-        width={400}
-        height={160}
-        viewBox="0 0 400 160"
-        backgroundColor="#f3f3f3"
-        foregroundColor="#ecebeb"
-      >
-        <rect x="11" y="108" rx="3" ry="3" width="116" height="9" /> 
-        <circle cx="70" cy="51" r="43" />
-        </ContentLoader>
-    )
- */
     return(
         <div className="pizza-block">
             <img
             className="pizza-block__image"
-            src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+            src={imageUrl}
             alt="Pizza"
             />
             <h4 className="pizza-block__title">{name}</h4>
@@ -105,14 +90,14 @@ PizzaBlock.propTypes = {
     price: PropTypes.number,
     types: PropTypes.arrayOf(PropTypes.number),
     sizes: PropTypes.arrayOf(PropTypes.number)
-  };
+};
   
-  PizzaBlock.defaultProps = {
+PizzaBlock.defaultProps = {
     name: '---',
     price: 0,
     types: [],
     sizes: [],
-  };
+};
   
 
 export default PizzaBlock

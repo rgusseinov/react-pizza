@@ -35,7 +35,7 @@ function Home(){
 
 
   const onSelectCategory = React.useCallback((index) => {
-      // console.log(`onSelectCategory`, index)
+      // console.log(`category`, category)
       dispatch(setCategory(index))
   }, [])
 
@@ -48,16 +48,13 @@ function Home(){
             items={catogoryNames}
           />
             
-            <SortPopup 
-              items={sortItems} />
+            <SortPopup activeSortType={sortBy} items={sortItems} />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
             { isLoaded 
               ? items.map((item) => <PizzaBlock isLoading={true} key={item.id} {...item} />)
-              : Array(12).
-              fill(0).
-              map((_, index) => <PizzaLoadingBlock key={index} />)
+              : Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)
             }             
         </div>
       </div>
