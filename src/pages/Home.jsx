@@ -16,6 +16,7 @@ function Home(){
   const dispatch = useDispatch()  
   const items = useSelector(({ pizzas }) => pizzas.items)
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded)
+  const { category, sortBy } = useSelector(({ filters }) => filters)
 
   React.useEffect(() => {
     // Перенести в Redux и подключить redux-thunk
@@ -30,10 +31,11 @@ function Home(){
 
     // }
     
-  }, [])
+  }, [category])
 
 
   const onSelectCategory = React.useCallback((index) => {
+      // console.log(`onSelectCategory`, index)
       dispatch(setCategory(index))
   }, [])
 
@@ -41,8 +43,10 @@ function Home(){
         <div className="container">
         <div className="content__top">
           <Categories 
-            items={catogoryNames} 
-            onItemClick={onSelectCategory}  />
+            activeCategory={category}
+            onClickCategory={onSelectCategory}
+            items={catogoryNames}
+          />
             
             <SortPopup 
               items={sortItems} />
