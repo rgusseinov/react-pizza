@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Categories, SortPopup, PizzaBlock, PizzaLoadingBlock} from '../components'
 import {useSelector, useDispatch} from 'react-redux'
-import { setCategory } from '../redux/actions/filters'
+import { setCategory, setSortBy } from '../redux/actions/filters'
 import {setPizzas, fetchPizzas} from '../redux/actions/pizzas'
 
 
@@ -27,16 +27,19 @@ function Home(){
     // Убираем лишную загрузку json данных. Если пиццы в redux уже есть то не нужно
     // if (!items.length){
       // console.log(`items`, items)
-      dispatch(fetchPizzas())
+      dispatch(fetchPizzas(sortBy, category))
 
     // }
     
-  }, [category])
+  }, [category, sortBy])
 
 
   const onSelectCategory = React.useCallback((index) => {
-      // console.log(`category`, category)
       dispatch(setCategory(index))
+  }, [])
+
+  const onSelectSortType = React.useCallback((type) => {
+      dispatch(setSortBy(type))
   }, [])
 
     return (
@@ -48,7 +51,7 @@ function Home(){
             items={catogoryNames}
           />
             
-            <SortPopup activeSortType={sortBy} items={sortItems} />
+            <SortPopup activeSortType={sortBy} items={sortItems} onClickSortType={onSelectSortType} />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
