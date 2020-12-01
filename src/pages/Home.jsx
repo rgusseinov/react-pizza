@@ -42,6 +42,8 @@ function Home(){
       dispatch(setSortBy(type))
   }, [])
 
+  
+
     return (
         <div className="container">
         <div className="content__top">
