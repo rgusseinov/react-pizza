@@ -47,7 +47,7 @@ function Home(){
     return (
         <div className="container">
         <div className="content__top">
-          <Categories 
+          <Categories
             activeCategory={category}
             onClickCategory={onSelectCategory}
             items={catogoryNames}
@@ -58,7 +58,10 @@ function Home(){
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
             { isLoaded 
-              ? items.map((item) => <PizzaBlock isLoading={true} key={item.id} {...item} />)
+              ? items.map((item) => <PizzaBlock onClickAddPizza={(obj) => console.log(obj)}
+                                                isLoading={true}
+                                                key={item.id}
+                                                {...item} />)
               : Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)
             }             
         </div>
