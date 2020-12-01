@@ -5,7 +5,7 @@ import ContentLoader from "react-content-loader"
 import Button from '../Button'
 
 
-function PizzaBlock({id, name, price, types, sizes, imageUrl, onClickAddPizza}){
+function PizzaBlock({id, name, price, types, sizes, imageUrl, onClickAddPizza, addedCount}){
     const typeNames = ['тонкое', 'традиционное']
     const availableSizes = [26, 30, 40]
 
@@ -85,7 +85,7 @@ function PizzaBlock({id, name, price, types, sizes, imageUrl, onClickAddPizza}){
                         />
                         </svg>
                         <span>Добавить</span>
-                        <i>2</i>
+                        {addedCount && <i>{addedCount}</i>}
                     </Button>
                 </div>
         </div>
