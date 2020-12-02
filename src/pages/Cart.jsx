@@ -34,7 +34,7 @@ function Cart(){
     />
   </div>
   <div className="cart__item-info">
-    <h3>Сырный цыпленок</h3>
+    <h3>Сырный цыпленок.</h3>
     <p>тонкое тесто, 26 см.</p>
   </div>
   <div className="cart__item-count">

@@ -24,7 +24,6 @@ function Home(){
     // Перенести в Redux и подключить redux-thunk
     // Следить за фильтрацией и сортировкой и подставлять параметры в URL из Redux
     // Сделать имитацию загрущки пицц (которая есть в CSS и в PizzaBlock)
-    // console.log(fetchPizzas())
 
     // Убираем лишную загрузку json данных. Если пиццы в redux уже есть то не нужно
     // if (!items.length){
@@ -45,7 +44,6 @@ function Home(){
   }, [])
 
   const handleAddPizzaToCart = (obj) => {
-    // console.log(obj)
     dispatch({
       type: 'ADD_PIZZA_CART',
       payload: obj
