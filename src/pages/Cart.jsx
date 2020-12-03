@@ -5,9 +5,8 @@ import CartItem from './CartItem'
 function Cart(){
     // const dispatch = useDispatch()
     const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart)
-    // console.log(`items`, items)
-
     const addedPizzas = Object.keys(items).map(key => items[key])
+    // console.log(`totalPrice`, totalPrice)
 
     return (
       <div className="content">
@@ -33,16 +32,17 @@ function Cart(){
             </div>
             <div className="content__items">
             {
-              // console.log(`addedPizzas`, addedPizzas)
+              // console.log(`addedPizzas`, addedPizzas[0].items[0].name)
+              // console.log(`totalPrice`, addedPizzas[0].totalPrice)
             }
               
             { addedPizzas.map((obj, key) =>(
               <CartItem
                 key={key}
-                name={obj.name}                
-                size={obj.size}
-                type={obj.type}
-                totalPrice={items[obj.id]}
+                name={obj.items[0].name}                
+                size={obj.items[0].size}
+                type={obj.items[0].type}
+                totalPrice={obj.totalPrice}
                 />))
             }
 
