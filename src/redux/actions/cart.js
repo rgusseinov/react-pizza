@@ -7,3 +7,10 @@ export const addPizzaToCart = (pizzaObj) => ({
 export const clearCart = () => ({
   type: 'CLEAR_CART'
 })
+
+// Remove cart item
+
+export const removeCartItem = (id) => ({
+  type: 'REMOVE_CART_ITEM',
+  payload: id
+})

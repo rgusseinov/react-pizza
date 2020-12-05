@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import CartItem from './CartItem'
-import { clearCart } from '../redux/actions/cart'
+import { clearCart, removeCartItem } from '../redux/actions/cart'
 import cartEmptyImage from '../assets/img/empty-cart.png'
 
 function Cart(){
@@ -18,12 +18,16 @@ function Cart(){
       }
     }
 
+    const onRemoveItem = (id) => {
+      if (window.confirm('Вы действительно хотите удалить пиццу ?')){
+        dispatch(removeCartItem(id))
+      }
+    }
+
     return (
       <div className="content">
         <div className="container container--cart">
-
-          {
-            totalCount ?
+          {totalCount ? (
             <div className="cart">
             <div className="cart__top">
               <h2 className="content__title"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,12 +55,14 @@ function Cart(){
               
             { addedPizzas.map((obj, key) =>(
               <CartItem
+                id={obj.items[0].id}
                 key={key}
                 name={obj.items[0].name}                
                 size={obj.items[0].size}
                 type={obj.items[0].type}
                 totalPrice={obj.totalPrice}
                 totalCount={obj.items.length}
+                onRemove={onRemoveItem}
                 />))
             }
 
@@ -80,23 +86,19 @@ function Cart(){
               </div>
             </div>
           </div>
-          : 
-
-          <div class="cart cart--empty">
-            <h2>Корзина пустая <icon>😕</icon></h2>
-            <p>
-              Вероятней всего, вы не заказывали ещё пиццу.<br />
-              Для того, чтобы заказать пиццу, перейди на главную страницу.
-            </p>
-            <img src={cartEmptyImage} alt="Empty cart" />
-            <Link to="/" class="button button--black">
-              <span>Вернуться назад</span>
-            </Link>
-          </div>
-
-          }
-
-
+            ) : (
+              <div className="cart cart--empty">
+                <h2>Корзина пустая <icon>😕</icon></h2>
+                <p>
+                  Вероятней всего, вы не заказывали ещё пиццу.<br />
+                  Для того, чтобы заказать пиццу, перейди на главную страницу.
+                </p>
+                <img src={cartEmptyImage} alt="Empty cart" />
+                <Link to="/" className="button button--black">
+                  <span>Вернуться назад</span>
+                </Link>
+              </div>
+            )}
         </div>
       </div>
     )
