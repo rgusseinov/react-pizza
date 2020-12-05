@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import classNames from 'classnames'
 import {PropTypes} from 'prop-types'
-import ContentLoader from "react-content-loader"
+// import ContentLoader from "react-content-loader"
 import Button from '../Button'
 
 
