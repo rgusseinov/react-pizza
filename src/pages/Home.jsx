@@ -14,6 +14,7 @@ const sortItems = [
 ]
 
 function Home(){
+  
   const dispatch = useDispatch()  
   const items = useSelector(({ pizzas }) => pizzas.items)
   const cartItems = useSelector(({ cart }) => cart.items)
@@ -39,6 +40,7 @@ function Home(){
       dispatch(setCategory(index))
   }, [])
 
+  // Сортировка по популярности и алфавиту
   const onSelectSortType = React.useCallback((type) => {
       dispatch(setSortBy(type))
   }, [])
@@ -49,6 +51,8 @@ function Home(){
       payload: obj
     })
   }
+
+  console.log(`sortBy`, sortBy)
 
     return (
         <div className="container">

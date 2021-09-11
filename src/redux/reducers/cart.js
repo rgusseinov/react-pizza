@@ -59,11 +59,16 @@ const cart = (state = initialState, action) => {
       const newItems = {
         ...state.items
       }
+      const currentTotalPrice = newItems[action.payload].totalPrice;
+      const currentTotalCount = newItems[action.payload].items.length;
+      
       delete newItems[action.payload]
 
       return {
         ...state,
-        items: newItems
+        items: newItems,
+        totalPrice: state.totalPrice - currentTotalPrice,
+        totalCount: state.totalCount - currentTotalCount
       }
     }
 

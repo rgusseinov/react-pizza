@@ -21,6 +21,7 @@ const SortPopup = React.memo(function SortPopup({ items, activeSortType, onClick
     }
 
     const onSelectItem = (index) => {
+        // console.log(`index`, index);
         onClickSortType(index)
         // setActiveItem(index)
         setVisiblePopup(false)
