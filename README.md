@@ -16,9 +16,9 @@
 ### npm start
 
 * Запуск приложения в режиме разработки: [http://localhost:3000](http://localhost:3000).
-* Для запуск локального json сервера, используйте команду:
 
 ### npx json-server --watch public/db.json --port=3001
+* Для запуск локального json сервера, используйте команду:
 
 ## Демо
 [Посмотреть приложение](https://rgusseinov.github.io/react-pizza/)
