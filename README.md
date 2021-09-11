@@ -19,6 +19,3 @@
 
 ### npx json-server --watch public/db.json --port=3001
 * Для запуска локального json сервера, используйте команду:
-
-## Демо
-[Посмотреть приложение](https://rgusseinov.github.io/react-pizza/)
