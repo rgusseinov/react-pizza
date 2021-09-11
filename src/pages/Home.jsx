@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {Categories, SortPopup, PizzaBlock, PizzaLoadingBlock} from '../components'
 import {useSelector, useDispatch} from 'react-redux'
 import { setCategory, setSortBy } from '../redux/actions/filters'
-import {setPizzas, fetchPizzas} from '../redux/actions/pizzas'
+import {fetchPizzas} from '../redux/actions/pizzas'
 import {} from '../redux/actions/cart'
 
 
@@ -22,17 +22,7 @@ function Home(){
   const { category, sortBy } = useSelector(({ filters }) => filters)
 
   React.useEffect(() => {
-    // Перенести в Redux и подключить redux-thunk
-    // Следить за фильтрацией и сортировкой и подставлять параметры в URL из Redux
-    // Сделать имитацию загрущки пицц (которая есть в CSS и в PizzaBlock)
-
-    // Убираем лишную загрузку json данных. Если пиццы в redux уже есть то не нужно
-    // if (!items.length){
-      // console.log(`items`, items)
       dispatch(fetchPizzas(sortBy, category))
-
-    // }
-    
   }, [category, sortBy])
 
 
@@ -51,8 +41,6 @@ function Home(){
       payload: obj
     })
   }
-
-  console.log(`sortBy`, sortBy)
 
     return (
         <div className="container">

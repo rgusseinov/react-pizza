@@ -45,10 +45,6 @@ function Cart(){
               </div>
             </div>
             <div className="content__items">
-            {
-              // console.log(`addedPizzas`, addedPizzas[0].items[0].name)
-              // console.log(`totalPrice`, addedPizzas[0].totalPrice)
-            }
               
             { addedPizzas.map((obj, key) =>(
               <CartItem
